@@ -1,46 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>
-            Linh nguuuuuuuuu
-        </title>
+        <title>Linh nguuuuuuuuu</title>
         <link rel="icon" href="linh ngu.jpg" type="image/x-icon">
-        <script>
-            // Hàm dùng để lấy dữ liệu thời tiết và cập nhật vào phần tử HTML
-            function getWeather(lat, lon, nhietdoId, rainId, locationName) {
-                const apiKey = '6da6c8cd395f51d3fb87f2e71571b87c';
-                const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}&lang=vi`;
-
-                fetch(url)
-                .then(function(response){
-
-                    return response.json()} )
-                .then(function(data) {
-                    const nhietdo = data.main.temp;
-                    const rain = data.weather[0].description;
-
-                    document.querySelector(nhietdoId).innerHTML = `Thời tiết bây giờ ở ${locationName} là ${nhietdo}°C`;
-                    document.querySelector(rainId).innerHTML = rain;
-                })
-                .catch(function(error) {
-                    document.querySelector(nhietdoId).innerHTML = `Tháng sau dùng tiếp nhé, bị lỗi ${error} rồi`;
-                });
-            }
-
-            document.addEventListener('DOMContentLoaded', () => {
-                // Lấy thời tiết ở trọ
-                getWeather(21.083722, 105.772076, '#nhietdoHN', '#rainHN', 'trọ');
-                
-                // Lấy thời tiết ở quê
-                getWeather(21.586592, 105.818792, '#nhietdoTN', '#rainTN', 'quê');
-            });
-        </script>
+        <!-- Link tới file javascript -->
+        <script src='quangtujava.js'></script>
+        <!-- Link tới file css -->
+        <link rel="stylesheet" href="quangtucss.css">
     </head>
     <body>
-        <h1 id="nhietdoHN"></h1>
-        <h1 id="rainHN"></h1>
-        <h2>[21.1333, 105.7667] là của trạm thời tiết 'Hau Duong' gần nhất của openweathermap cách trọ cỡ 6km</h2>
-        <h1 id="nhietdoTN"></h1>
-        <h1 id="rainTN"></h1>  
+        <h1 id="title">Thông tin thời tiết</h1>
+        
+        <!-- Container bao quanh cả thời tiết và danh sách -->
+        <div class="content-container">
+            <!-- Các hộp chứa nhiệt độ và thời tiết -->
+            <div class="weather-container">
+                <!-- Nhiệt độ ở trọ -->
+                <div class="weather-box">
+                    <h2 id="nhietdoHN"></h2>
+                    <h3 id="rainHN"></h3>
+                    <p id="buiHN"></p>
+                </div>
+                
+                <!-- Nhiệt độ ở quê -->
+                <div class="weather-box">
+                    <h2 id="nhietdoTN"></h2>
+                    <h3 id="rainTN"></h3>
+                    <p id="buiTN"></p>
+                </div>
+            </div>
+
+            <!-- Danh sách -->
+            <div class="list-container">
+                <ol>
+                    <h3>Chất lượng không khí</h3>
+                    <li>Tốt</li>
+                    <li>Trung bình</li>
+                    <li>Kém</li>
+                    <li>Xấu</li>
+                    <li>Rất xấu</li>
+                </ol>
+            </div>
+        </div>
+        
+        <h2 id ='vovan'>[21.1333, 105.7667] là của trạm thời tiết 'Hau Duong' gần nhất của openweathermap cách trọ cỡ 6km</h2>
     </body>
 </html>
