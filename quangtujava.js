@@ -2,7 +2,7 @@
 function getWeather(lat, lon, nhietdoId, rainId, buiID, locationName) {
     const apiKey = '6da6c8cd395f51d3fb87f2e71571b87c';
     const url1 = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}&lang=vi`;
-    const url2 = `http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+    const url2 = `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${apiKey}`;
 
     Promise.all([fetch(url1), fetch(url2)])
     .then(async function([response1, response2]) {
