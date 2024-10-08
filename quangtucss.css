@@ -1,0 +1,101 @@
+/* Cấu hình chung cho body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start; /* Đặt các phần tử về bên trái */
+    align-items: flex-start; /* Đặt các phần tử về phía trên cùng */
+    flex-direction: column;
+    
+}
+
+/* Tiêu đề chính */
+h1 {
+    text-align: center;
+    color: #333;
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* Container bao quanh cả thời tiết và danh sách */
+.content-container {
+    display: flex;
+    justify-content: flex-start; /* Đặt các thành phần nằm sát bên trái */
+    align-items: flex-start;
+    gap: 10px; /* Giảm khoảng cách giữa các thành phần */
+    margin-top: 20px;
+}
+.weather-box .temp-value {
+    
+    color: red;
+    font-weight: bold;
+} /* Màu đỏ cho giá trị nhiệt độ */
+
+/* Các hộp chứa thông tin thời tiết */
+.weather-container {
+    display: flex;
+    justify-content: space-between; /* Đảm bảo các hộp nằm cạnh nhau */
+    gap: 10px; /* Giảm khoảng cách giữa các hộp nhiệt độ */
+    width: 300px; /* Điều chỉnh chiều rộng tổng thể của 2 hộp */
+}
+
+/* Hộp nhiệt độ cho trọ và quê */
+.weather-box {
+    background-color: #fff;
+    border: 2px solid #ccc; /* Giữ viền */
+    border-radius: 8px;
+    padding: 10px;
+    width: 140px; /* Điều chỉnh chiều rộng của các ô */
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+}
+
+/* Phần thông tin chi tiết */
+#nhietdoHN, #nhietdoTN {
+    font-size: 14px;
+    color: #ff7f50;
+    font-weight: bold;
+}
+
+#rainHN, #rainTN, #buiHN, #buiTN {
+    font-size: 12px;
+    color: #1e90ff;
+    margin-top: 5px;
+}
+
+/* Danh sách nằm bên phải */
+.list-container {
+    background-color: #fff;
+    border: 2px solid #ccc; /* Giữ viền giống như các hộp */
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    width: 140px; /* Đặt kích thước chiều rộng cho danh sách */
+    margin-left: 10px; /* Giảm khoảng cách giữa danh sách và hộp nhiệt độ */
+}
+
+#vovan {
+    text-align: left;
+    font-size: 13px;
+    color: black;
+    font-style: italic;
+    max-width: 300px;  /* Giới hạn chiều rộng tối đa của h2 */
+    width: 100%;       /* Đảm bảo chiều rộng của h2 có thể thay đổi linh hoạt */
+    word-wrap: break-word;  /* Cho phép xuống dòng trong từ nếu cần thiết */
+    margin-top: -40px;
+}
+h3{
+    text-align: left;
+    font-size: 15px;
+    margin-left: -11px;
+    color: rgb(0, 179, 255);
+}
+#title{
+    color: rgb(255, 0, 0);
+}
+
