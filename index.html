@@ -5,9 +5,41 @@
             Linh nguuuuuuuuu
         </title>
         <link rel="icon" href="linh ngu.jpg" type="image/x-icon">
+        <script>
+            document.addEventListener('DOMContentLoaded',()=>{
+                fetch('https://api.openweathermap.org/data/2.5/weather?lat=21.083722&lon=105.772076&units=metric&appid=6da6c8cd395f51d3fb87f2e71571b87c&lang=vi')
+                .then(function(travechotao){
+                    return travechotao.json()
+                })
+                .then(function(truycap){
+                    thoitietHN = truycap.main.temp
+                    rainHN = truycap.weather[0].description
+                    document.querySelector('#nhietdoHN').innerHTML = `Thời tiết bây giờ ở trọ là ${thoitietHN}°C`;
+                    document.querySelector('#rainHN').innerHTML = `${rainHN}`
+                })
+                .catch(function(biloiroi){
+                    document.querySelector('#nhietdoHN').innerHTML = `Tháng sau dùng tiếp nhé`
+                })
+                // Đây là ở quê
+                fetch('https://api.openweathermap.org/data/2.5/weather?lat=21.586592&lon=105.818792&units=metric&appid=6da6c8cd395f51d3fb87f2e71571b87c&lang=vi')
+                .then(function(travechotao){
+                    return travechotao.json()
+                })
+                .then(function(truycap){
+                    thoitietTN = truycap.main.temp
+                    rainTN = truycap.weather[0].description
+                    document.querySelector('#nhietdoTN').innerHTML = `Thời tiết bây giờ ở quê là ${thoitietTN}°C`
+                    document.querySelector('#rainTN').innerHTML = rainTN
+                })
+            })
+        </script>
   
     </head>
     <body>
-        <img src="mèo béo.jpg" alt="meo beo" width="500px">
+        <h1 id = nhietdoHN></h1>
+        <h1 id = rainHN></h1>
+        <h2>[21.1333, 105.7667] là của trạm thời tiết 'Hau Duong' gần nhất của openweathermap cách trọ cỡ 6km</h2>
+        <h1 id = nhietdoTN></h1>
+        <h1 id = rainTN></h1>  
     </body>
 </html>
