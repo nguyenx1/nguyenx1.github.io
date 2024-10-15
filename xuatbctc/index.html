@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xuất BCTC</title>
+ 
+  <script>
+  function xuatBCTC(firm){
+
+    const urlKQHDKD = `https://s.cafef.vn/bao-cao-tai-chinh/${firm}/incsta/2024/0/0/0/0/ket-qua-hoat-dong-kinh-doanh-.chn`
+    const urlBCDKT = `https://s.cafef.vn/bao-cao-tai-chinh/${firm}/bsheet/2024/0/0/0/0/bao-cao-tai-chinh-.chn`
+    const urlLCTT = `https://s.cafef.vn/bao-cao-tai-chinh/${firm}/cashflow/2024/0/0/0/0/luu-chuyen-tien-te-gian-tiep-.chn`
+    
+    Promise.all([fetch(urlKQHDKD), fetch(urlBCDKT), fetch(urlLCTT)])
+      
+      .then(async function([data1,data2,data3]){
+        const hdkd = await data1.text()
+        const cdkt = await data2.text()
+        const lctt = await data3.text()
+        // Khởi tạo DOM, nếu là DOM thì ta có thể sử dụng các lệnh quen thuộc như querySelector
+        const parser = new DOMParser();
+    
+        // Biến data từ text thành HTML
+        const chotaohtml1 = parser.parseFromString(hdkd, 'text/html'); // Phân tích dữ liệu thành DOM
+        const chotaohtml2 = parser.parseFromString(cdkt, 'text/html');
+        const chotaohtml3 = parser.parseFromString(lctt, 'text/html');
+        // Tìm bảng có id="tableContent"
+        const tableContent1 = chotaohtml1.querySelector('#tableContent');
+        const tableContent2 = chotaohtml2.querySelector('#tableContent');
+        const tableContent3 = chotaohtml3.querySelector('#tableContent');
+        // nếu ghi 'style' thì selector sẽ hiểu là tìm tag style, mà lgi có tag đó
+        // nếu ghi [] sẽ hiểu là tìm tất cả thuộc tính
+        const xoastyle1 = chotaohtml1.querySelectorAll('[style]');
+        const xoastyle2 = chotaohtml2.querySelectorAll('[style]');
+        const xoastyle3 = chotaohtml3.querySelectorAll('[style]');
+       // xóa style của tất cả các tags
+       xoastyle1.forEach(element => {
+        element.removeAttribute("style");
+    });
+    xoastyle2.forEach(element => {
+        element.removeAttribute("style");
+    });
+    xoastyle3.forEach(element => {
+        element.removeAttribute("style");
+    });
+    
+    
+    
+    for (let row of tableContent1.rows) {
+  // Bước 1: Tạo thẻ tr
+  let newRow = document.createElement('tr');
+
+// Bước 2: Tạo thẻ td
+let newCell1 = document.createElement('td'); // Tạo ô 1
+let newCell2 = document.createElement('td'); // Tạo ô 2
+let newCell3 = document.createElement('td'); // Tạo ô 3
+let newCell4 = document.createElement('td'); // Tạo ô 4
+// Bước 3: Thêm nội dung cho các thẻ td
+newCell1.textContent = row.cells[0].textContent;; // Nội dung cho ô 1
+newCell2.textContent = row.cells[1].textContent;; // Nội dung cho ô 2
+newCell3.textContent = row.cells[2].textContent;; // Nội dung cho ô 3
+newCell4.textContent = row.cells[3].textContent;; // Nội dung cho ô 4
+
+
+// Bước 4: Chèn các thẻ td vào thẻ tr
+newRow.appendChild(newCell1); // Thêm ô 1 vào hàng
+newRow.appendChild(newCell2); // Thêm ô 2 vào hàng
+newRow.appendChild(newCell3); // Thêm ô 3 vào hàng
+newRow.appendChild(newCell4); // Thêm ô 4 vào hàng
+
+// Bước 5: Chèn thẻ tr vào thẻ table
+document.getElementById('table1').appendChild(newRow);
+    }
+    for (let row of tableContent2.rows) {
+  // Bước 1: Tạo thẻ tr
+  let newRow = document.createElement('tr');
+
+// Bước 2: Tạo thẻ td
+let newCell1 = document.createElement('td'); // Tạo ô 1
+let newCell2 = document.createElement('td'); // Tạo ô 2
+let newCell3 = document.createElement('td'); // Tạo ô 3
+let newCell4 = document.createElement('td'); // Tạo ô 4
+// Bước 3: Thêm nội dung cho các thẻ td
+newCell1.textContent = row.cells[0].textContent;; // Nội dung cho ô 1
+newCell2.textContent = row.cells[1].textContent;; // Nội dung cho ô 2
+newCell3.textContent = row.cells[2].textContent;; // Nội dung cho ô 3
+newCell4.textContent = row.cells[3].textContent;; // Nội dung cho ô 4
+
+
+// Bước 4: Chèn các thẻ td vào thẻ tr
+newRow.appendChild(newCell1); // Thêm ô 1 vào hàng
+newRow.appendChild(newCell2); // Thêm ô 2 vào hàng
+newRow.appendChild(newCell3); // Thêm ô 3 vào hàng
+newRow.appendChild(newCell4); // Thêm ô 4 vào hàng
+
+// Bước 5: Chèn thẻ tr vào thẻ table
+document.getElementById('table2').appendChild(newRow);
+    }
+    for (let row of tableContent3.rows) {
+  // Bước 1: Tạo thẻ tr
+  let newRow = document.createElement('tr');
+
+// Bước 2: Tạo thẻ td
+let newCell1 = document.createElement('td'); // Tạo ô 1
+let newCell2 = document.createElement('td'); // Tạo ô 2
+let newCell3 = document.createElement('td'); // Tạo ô 3
+let newCell4 = document.createElement('td'); // Tạo ô 4
+// Bước 3: Thêm nội dung cho các thẻ td
+newCell1.textContent = row.cells[0].textContent;; // Nội dung cho ô 1
+newCell2.textContent = row.cells[1].textContent;; // Nội dung cho ô 2
+newCell3.textContent = row.cells[2].textContent;; // Nội dung cho ô 3
+newCell4.textContent = row.cells[3].textContent;; // Nội dung cho ô 4
+
+
+// Bước 4: Chèn các thẻ td vào thẻ tr
+newRow.appendChild(newCell1); // Thêm ô 1 vào hàng
+newRow.appendChild(newCell2); // Thêm ô 2 vào hàng
+newRow.appendChild(newCell3); // Thêm ô 3 vào hàng
+newRow.appendChild(newCell4); // Thêm ô 4 vào hàng
+
+// Bước 5: Chèn thẻ tr vào thẻ table
+document.getElementById('table3').appendChild(newRow);
+    }
+        // Nếu tìm thấy bảng, chèn nó vào phần tử div trong trang web.
+        // InnerHTML chỉ trả về giá trị của thẻ, còn outerHTML trả về cả các thẻ bao bọc ngoài của phần tử. Ở đây documentElenment tức lấy hết DOM chotaohtml
+        
+    
+        console.log(tableContent); // In dữ liệu HTML đầy đủ
+      })
+      .catch(function(error){
+        console.error('Lỗi khi fetch dữ liệu:', error);
+      });
+    }
+    document.addEventListener('DOMContentLoaded',function(){
+        document.querySelector('#nhap').onsubmit = function() {
+        const tencongty = document.querySelector('#tencongty').value;
+        document.querySelectorAll('td').forEach(data =>{
+          // xóa các thẻ td cũ, nếu khi BCTC công ty mới sẽ ghi liền xuống BCTC công ty cũ
+          data.remove()
+        })
+        xuatBCTC(`${tencongty}`)
+        return false;
+        }
+    })
+    </script>
+  <style>
+   table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 32%; /* Giữ chiều rộng của bảng */
+  float: left; /* Đặt bảng cạnh nhau */
+  margin-right: 10px; /* Thêm khoảng cách giữa các bảng */
+}
+
+
+td, th {
+  border: 1px solid black; /* Viền mỏng 1px */
+  padding: 4px; /* Giảm padding để bảng nhỏ hơn */
+  font-size: 7px; /* Thu nhỏ cỡ chữ */
+}
+
+tr:first-child td:first-child {
+  border-top-left-radius: 8px;
+}
+
+tr:first-child td:last-child {
+  border-top-right-radius: 8px;
+}
+
+tr:last-child td:first-child {
+  border-bottom-left-radius: 8px;
+}
+
+tr:last-child td:last-child {
+  border-bottom-right-radius: 8px;
+}
+
+
+  </style>
+</head>
+<body>
+    <form id ='nhap'>
+        <input id="tencongty" placeholder="Nhập tên công ty" type="text">
+        <input type="submit" value="Lấy BCTC">
+    </form>
+    <table id = 'table1'>
+        <thead>
+            <tr>
+                <th>Chỉ tiêu</th>
+                <th>Năm 2021</th>
+                <th>Năm 2022</th>
+                <th>Năm 2023</th>
+            </tr>
+        </thead>
+    </table>
+    <table id = 'table2'>
+        <thead>
+            <tr>
+                <th>Chỉ tiêu</th>
+                <th>Năm 2021</th>
+                <th>Năm 2022</th>
+                <th>Năm 2023</th>
+            </tr>
+        </thead>
+    </table>
+    <table id = 'table3'>
+        <thead>
+            <tr>
+                <th>Chỉ tiêu</th>
+                <th>Năm 2021</th>
+                <th>Năm 2022</th>
+                <th>Năm 2023</th>
+            </tr>
+        </thead>
+    </table>
+  
+    
+</body>
+</html>
